@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fffdf5;
+  --cream-deep: #fff3d6;
+  --mustard: #ffd130;
+  --mustard-deep: #f0b800;
+  --burgundy: #8c1c33;
+  --burgundy-deep: #6e1427;
+  --pink: #f49ac1;
+  --pink-soft: #ffd6e8;
+  --ink: #1c1214;
+  --muted: #6b5a5e;
+  --white: #ffffff;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-mustard: var(--mustard);
+  --color-mustard-deep: var(--mustard-deep);
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-deep: var(--burgundy-deep);
+  --color-pink: var(--pink);
+  --color-pink-soft: var(--pink-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--mustard);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.scallop-top {
+  --scallop: 28px;
+  mask-image: radial-gradient(circle at 50% 0, #000 70%, transparent 71%);
+  mask-size: var(--scallop) var(--scallop);
+  mask-repeat: repeat-x;
+  mask-position: 0 -14px;
+}
+
+.scallop-edge {
+  background:
+    radial-gradient(circle at 12px 0, transparent 11px, currentColor 12px) left
+      top / 24px 12px repeat-x,
+    radial-gradient(circle at 12px 12px, currentColor 11px, transparent 12px)
+      left bottom / 24px 12px repeat-x;
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+}
+
+.animate-float {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-y 5.2s ease-in-out 0.6s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 5s ease-in-out infinite;
+}
